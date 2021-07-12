@@ -1,0 +1,13 @@
+
+For the coefficients: 1, -8,  and 5 there exist 2 real roots for the equation.
+The real roots are 7.31662 and 0.683375
+
+For the coefficients: 5, -2,  and 32 there exist 0 real roots for the equation.
+
+For the coefficients: 4, 3,  and 2 there exist 0 real roots for the equation.
+
+For the coefficients: 4, 12,  and 9 there exist 1 real roots for the equation.
+The real root is -1.5
+
+For the coefficients: 5, 20,  and 5 there exist 2 real roots for the equation.
+The real roots are -0.267949 and -3.73205

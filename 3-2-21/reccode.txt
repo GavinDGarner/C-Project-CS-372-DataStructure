@@ -1,0 +1,304 @@
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
+#include <iomanip>
+#include <string>
+#include <fstream>
+using namespace std;
+ofstream output;
+int countDigits(int a);
+void printReverse(int a);
+void reverseArray(int ary[],int first, int last);
+int sumArray(int ary,int n);
+int location(int ary[],int first,int last,int element);
+int gcd(int a,int b);
+int hailStones(int a);
+double sumOver(double n);
+void fill35Backward(int ary[],int n);
+void fill35Forward(int ary[],int n);
+void fillFromMiddle(int ary[],int first, int last,int n);
+int strToNum(string str, int n, int s);
+void Hanoi(int n, char source, char dest, char spare );
+
+int countDigits(int a)
+{
+    static int digits=0;
+    if(a<0)
+        countDigits(-a);
+    if(a<10)
+        return 1;
+    return countDigits(a/10)+1;
+}
+void printReverse(int a)
+{
+    if(a==0)
+    {
+        return;
+    }
+    else
+    {
+        cout<<a%10;
+        output<<a%10;
+        printReverse(a/10);
+    }
+
+}
+void reverseArray(int ary[],int first, int last)
+{
+    static int stopHere=last;
+    if(first>=last)
+    {
+        for(int i=0;i<stopHere;i++)
+        {
+            cout<<ary[i]<<" ";
+            output<<ary[i]<<" ";
+        }
+        return;
+    }
+    else
+    {
+        int temp;
+        temp=ary[first];
+        ary[first]=ary[last];
+        ary[last]=temp;
+        reverseArray(ary,first+1,last-1);
+        return;
+    }
+}
+int sumArray(int ary[],int n)
+{
+  if (n < 0)
+    return 0;
+  else
+    return ary[n-1] + sumArray(ary, n-1);
+}
+int location(int ary[],int first,int last,int element)
+{
+    output.open("recursion.txt");
+    if(first==last)
+    {
+        cout<<"\nNot found!\n";
+        output<<"\nNot found!\n";
+        return -1;
+    }
+    if(ary[last]==element)
+    {
+        return last;
+    }
+    location(ary,first,last-1,element);
+}
+int gcd(int a,int b)
+{
+    int r;
+    r = a % b;
+    if (r == 0)
+        return b;
+    else
+        return gcd(b,r);
+}
+int hailStones(int a)
+{
+    if(a==1)
+    {
+        return 0;
+    }
+    if(a<0)
+    {
+        return(abs(a));
+    }
+    if(a%2==0)
+    {
+        return hailStones((a/2))+1;
+
+    }
+    else
+    {
+        return hailStones(((3*a)+1))+1;
+
+    }
+}
+double sumOver(double n)
+{
+    if(n==9999)
+        return n;
+    return 1/(sumOver(n+1))+1;
+}
+void fill35Forward(int ary[],int n)
+{
+    if(n==35)
+    {
+        for(int i=0;i<35;i++)
+        {
+            cout<<ary[i]<<" ";
+            output<<ary[i]<<" ";
+        }
+        return;
+    }
+    ary[n]=n+1;
+    fill35Forward(ary,n+1);
+}
+void fill35Backward(int ary[],int n)
+{
+    if(n==0)
+    {
+        for(int i=0;i<35;i++)
+        {
+            cout<<ary[i]<<" ";
+            output<<ary[i]<<" ";
+        }
+        return;
+    }
+    ary[35-n]=n;
+    fill35Backward(ary,n-1);
+}
+void fillFromMiddle(int ary[],int first, int last,int n)
+{
+    if (n==0)
+    {
+        for(int i=0;i<19;i++)
+        {
+            cout<<ary[i]<<" ";
+            output<<ary[i]<<" ";
+        }
+        return;
+    }
+  //else
+  if (n%2 == 0) {
+    ary[last] = n;
+    fillFromMiddle(ary, first, last-1, n-1);
+  }
+  if (n%2 != 0) {
+    ary[first] = n;
+    fillFromMiddle(ary, first+1, last, n-1);
+  }
+  return;
+}
+// Converts a string to an integer number
+int strToNum(string ary, int n, int s)
+{
+  if (n==0)
+  {
+    for(int i=0;i<s;i++)
+    {
+        cout<<ary[i]<<" ";
+        output<<ary[i]<<" ";
+        
+    }
+    return 0;
+  }
+  //else
+  ary[n-1] = ary[n-1] - '0';
+  return strToNum(ary, n-1, s) + ary[n-1]*pow(10, s-n);
+}
+
+int main()
+{
+      output.open("recursion.txt");
+    //data for the functions
+    const int SIZE=32;
+    int ary[SIZE];
+    //answers to the problems themselves
+    cout<<"Answer for number 21: "<<countDigits(123456789)<<endl;
+    output<<"Answer for number 21: "<<countDigits(123456789)<<endl;
+
+    cout<<"Answer for number 23: ";
+    output<<"Answer for number 23: ";
+    printReverse(999999412);
+    cout<<endl;
+    output<<endl;
+
+    cout<<"Answer for number 27: "<<endl<<"Starting array: "<<endl;
+    output<<"Answer for number 27: "<<endl<<"Starting array: "<<endl;
+    for(int i=0;i<SIZE;i++)
+    {
+        ary[i]=i;
+        cout<<ary[i]<<" ";
+        output<<ary[i]<<" ";
+    }
+    cout<<"\nReversed array: \n";
+    output<<"\nReversed array: \n";
+    reverseArray(ary,0,SIZE-1);
+    cout<<endl;
+    output<<endl;
+
+    cout<<"Answer for 28: \nStarting array: \n";
+    output<<"Answer for 28: \nStarting array: \n";
+    for(int i=0;i<SIZE;i++)
+    {
+        ary[i]=i;
+        cout<<ary[i]<<" ";
+        output<<ary[i]<<" ";
+    }
+    cout<<"\nSum: "<<sumArray(ary,SIZE-1)<<endl;
+    output<<"\nSum: "<<sumArray(ary,SIZE-1)<<endl;
+
+    cout<<"Answer for 29: \nStarting array: \n";
+    output<<"Answer for 29: \nStarting array: \n";
+    for(int i=0;i<SIZE;i++)
+    {
+        ary[i]=i;
+        cout<<ary[i]<<" ";
+        output<<ary[i]<<" ";
+    }
+    cout<<"\nElement is at location: "<<location(ary,0,SIZE-1,31);
+    output<<"\nElement is at location: "<<location(ary,0,SIZE-1,31);
+    cout<<"\nElement is at location: "<<location(ary,0,SIZE-1,8734);
+    output<<"\nElement is at location: "<<location(ary,0,SIZE-1,8734);
+
+    cout<<"Answer for 33: \nGCD of 726,344 is "<<gcd(726,344)<<endl;
+    output<<"Answer for 33: \nGCD of 726,344 is "<<gcd(726,344)<<endl;
+
+    cout<<"\nHailstones problem: \n";
+    output<<"\nHailstones problem: \n";
+    cout<<hailStones(1779)<<endl;
+    output<<hailStones(1779)<<endl;
+    cout<<hailStones(116670)<<endl;
+    output<<hailStones(116670)<<endl;
+
+    cout<<"Sum over program: "<<fixed<<setprecision(20)<<sumOver(0)<<endl; //was I supposed to find the golden ratio?
+    output<<"Sum over program: "<<fixed<<setprecision(20)<<sumOver(0)<<endl;
+
+    cout<<"\nset all to 0\n";
+    output<<"\nset all to 0\n";
+    for(int i=0;i<SIZE;i++)
+    {
+        ary[i]=0;
+        cout<<ary[i]<<" ";
+        output<<ary[i]<<" ";
+    }
+    cout<<"\nAssign 0 to 35 to array: ";
+    output<<"\nAssign 0 to 35 to array: ";
+    fill35Forward(ary,0);
+    cout<<endl;
+    output<<endl;
+
+    cout<<"\nset all to 0\n";
+    output<<"\nset all to 0\n";
+    for(int i=0;i<SIZE;i++)
+    {
+        ary[i]=0;
+        cout<<ary[i]<<" ";
+        output<<ary[i]<<" ";
+    }
+    cout<<"\nAssign 35 to 0 to array: ";
+    output<<"\nAssign 35 to 0 to array: ";
+    fill35Backward(ary,35);
+    cout<<endl;
+    output<<endl;
+    
+    cout<<"Fill from middle: \n";
+    output<<"Fill from middle: \n";
+    fillFromMiddle(ary,0,19,19);
+    
+    cout<<"\nAscii to interger: \n";
+    output<<"\nAscii to interger: \n";
+    cout<<"\nUsing 17689375\n";
+    output<<"\nUsing 17689375\n";
+    for(int i=0;i<SIZE;i++)
+        ary[i]=0;
+    string st="17689375";
+    strToNum(st,8,8);
+    
+    
+    return 0;
+}

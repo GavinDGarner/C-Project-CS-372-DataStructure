@@ -1,0 +1,37 @@
+Processing set 1...
+
+Lowest number of set 1: 2.7
+Highest number of set 1: 9.1
+Number of values in set 1: 12
+Last number of set 1: 3.2
+Sum of the numbers of set 1: 70.3
+Mean of the numbers of set 1: 5.85833
+Erasing stored data for next set to be entered...
+
+Processing set 2...
+
+Lowest number of set 2: 0.0134
+Highest number of set 2: 0.828
+Number of values in set 2: 9
+Last number of set 2: 0.828
+Sum of the numbers of set 2: 4.4048
+Mean of the numbers of set 2: 0.489422
+Erasing stored data for next set to be entered...
+
+Processing set 3...
+
+Lowest number of set 3: 0
+Highest number of set 3: 0
+Number of values in set 3: 0
+Last number of set 3: 0
+Sum of the numbers of set 3: 0
+Mean of the numbers of set 3: 0
+Erasing stored data for next set to be entered...
+
+The average of Set 1 is : 5.85833
+The sum of Set 2 is : 4.4048
+The Number of values in Set 3 is : 0
+
+The largest number of Set 1 is : 9.1
+The largest number of Set 2 is : 0.828
+The largest number of Set 3 is : 0

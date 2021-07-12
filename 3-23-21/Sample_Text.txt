@@ -1,0 +1,137 @@
+/*
+Gavin Garner 
+CS 372
+WE need to generate a list of clients to call in order
+*/
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+//Constants
+ofstream outf;
+ifstream inf;
+
+const int MAX = 75;
+
+
+void heapers(double aray[], string nam[], string phone[], int n, int i){
+    int smallest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+  
+    if (left < n && aray[left] > aray[smallest])
+        smallest = left;
+  
+    if (right < n && aray[right] > aray[smallest])
+        smallest = right;
+  
+    if (smallest != i) {
+        swap(aray[i], aray[smallest]);
+        swap(nam[i], nam[smallest]);
+        swap(phone[i], phone[smallest]);
+
+        heapers(aray, nam, phone, n, smallest);
+    }
+}
+  
+
+void Heapit(double aray[], string nam[], string phone[], int n){
+
+    int start = (n / 2) - 1;
+  
+
+    for (int i = start; i >= 0; i--) {
+        heapers(aray, nam, phone, n, i);
+    }
+}
+
+void deleHeap(double aray[], string nam[], string phone[], double aray1[], string nam1[], string phone1[], int& n, int x)
+{
+    double lastElement = aray[n - 1];
+  
+    aray1[x] = aray[0];
+    nam1[x] = nam[0];
+    phone1[x] = phone[0];
+
+    aray[0] = lastElement;
+    nam[0] = nam[n-1];
+    phone[0] = phone[n-1];
+
+    n = n - 1;
+  
+    heapers(aray, nam, phone, n, 0);
+}
+  
+int main()
+{
+    outf.open("Result.txt");
+    inf.open("NamesAndPhoneV2.txt");
+
+    int x = 0;
+    string names[MAX];
+    string phonenum[MAX];
+    string temp;
+    string b = " ";
+    string sworth[MAX];
+    double worth[MAX];
+
+    while(inf >> temp){
+      if(isdigit(temp[0])){
+        phonenum[x] = temp;
+        x++;
+      }
+      else{
+        names[x].append(temp);
+        names[x] = names[x] + b;
+      }
+    }
+    inf.close();
+    inf.open("NamesAndPhonWorth.txt");
+
+    x=0;
+    while(inf >> temp){
+      sworth[x] = temp;
+      sworth[x].erase(0,1);
+      worth[x] = stod(sworth[x]); //convert to double
+      x++;
+    }
+    inf.close();
+
+
+  
+    int n = sizeof(worth) / sizeof(worth[0]);
+  
+    Heapit(worth, names , phonenum, n);
+  
+
+    string names1[MAX];
+    string phonenum1[MAX];
+    string temp1;
+    double worth1[MAX];
+
+    for(int y=0; y<x; y++){
+    deleHeap(worth, names, phonenum, worth1, names1, phonenum1, n , y);
+    }
+
+    outf << fixed << setprecision(2);
+    outf << "Week 1 Call List:\n\n";
+    outf << setw(40) << right << "Name|" << setw(10) << right << "Phone #|" << setw(25) << right << "Potential Worth|\n";
+    for(int y=x-1; y>x-6; y--){
+      outf <<  setw(40) << right << names1[y] << b << setw(10) << right << phonenum1[y] << b << "$" << setw(25) << right << worth1[y] << endl;
+    }  
+    outf << "Week 2 Call List:\n\n";
+    outf << setw(40) << right << "Name|" << setw(10) << right << "Phone #|" << setw(25) << right << "Potential Worth|\n";
+    for(int y=x-6; y>x-11; y--){
+      outf <<  setw(40) << right << names1[y] << b << setw(10) << right << phonenum1[y] << b << "$" << setw(25) << right << worth1[y] << endl;
+    }
+
+    outf << "Final Week Call List:\n\n";
+    outf << setw(40) << right << "Name|" << setw(10) << right << "Phone #|" << setw(25) << right << "Potential Worth|\n";
+    for(int y=4; y>-1; y--){
+      outf <<  setw(40) << right << names1[y] << b << setw(10) << right << phonenum1[y] << b << "$" << setw(25) << right << worth1[y] << endl;
+    }     
+
+    return 0;
+}

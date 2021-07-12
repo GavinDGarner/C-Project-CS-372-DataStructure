@@ -1,0 +1,32 @@
+Beginning procedures for turning main shuttle engines off.
+Current throttle position: 6
+Current flow ratio: 0.3
+Lowering throttle position by 1...
+Current throttle position: 5
+Current flow ratio: 0.25
+Lowering throttle position by 1...
+Current throttle position: 4
+Current flow ratio: 0.2
+Lowering throttle position by 1...
+Current throttle position: 3
+Current flow ratio: 0.15
+Lowering throttle position by 1...
+Current throttle position: 2
+Current flow ratio: 0.1
+Lowering throttle position by 1...
+Current throttle position: 1
+Current flow ratio: 0.05
+Lowering throttle position by 1...
+
+This shuttle's engines are no longer recieving fuel.
+
+Attempting to push throttle on the truck past its limitations.
+After attempting to shift 68 positions, the current throttle position is: 30
+This should be equivalent to the maximum throttle position: 30
+Now attempting the same procedure, but reversed by 68 positions.
+After attempting to shift 68 positions, the current throttle position is: 0
+This should be equivalent to the minimum throttle position: 0
+
+The car has arrived at its destination and should be turned off.
+Current throttle position: 0
+After running the shut off procedure the car's current throttle position is: 0

@@ -1,0 +1,50 @@
+In Order Tree List(20 entires):
+100 102 107 111 115 116 117 123 127 130 133 134 136 138 139 140 141 328 369 500 
+
+Pre Order Tree List(20 entires):
+141 117 116 107 100 102 115 111 134 123 130 127 133 136 140 139 138 500 369 328 
+
+Post Order Tree List(20 entires):
+102 100 111 115 107 116 127 133 130 123 138 139 140 136 134 117 328 369 500 141 
+
+Number of Nodes Values in Tree: 
+152
+
+Sum and Average of All Values
+Sum: 48338
+Average: 318.013
+
+Number of Leafs
+Total Leafs: 51
+
+Deepest Node Value:
+284
+
+Number of nodes that have One Child: 
+51
+
+
+Subtree with root as node 195 inorder:
+165 169 170 171 173 179 187 193 195 196 
+
+
+Subtree with root as node 450 postorder:
+448 450 
+
+Amount of numbers to the Left of the Root
+16
+
+Amount of numbers to the Right of the Root
+135
+
+Deleting all nodes whose sum of digits is less than 12:
+
+In Order Tree List (20 entires):
+139 157 159 169 179 187 193 195 196 238 239 247 248 256 257 266 277 328 369 498 
+
+Number of Nodes Values in Tree: 
+63
+
+Sum and Average of All Values
+Sum: 22349
+Average: 354.746
